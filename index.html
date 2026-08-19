@@ -184,29 +184,66 @@
       </section>
 
       <section id="models" class="section muted-section">
-        <div class="container text-container">
+        <div class="container">
           <h2>Model Suite</h2>
-          <p>
-            The evaluation covers 23 systems, including open-source audio-text LLMs,
-            omni-modal models, reasoning-oriented audio models, and proprietary systems.
-            The suite spans small systems such as Pengi, 7B-scale music/audio models such as
-            LTU, GAMA, Audio-Flamingo, MusiLingo, and Music Flamingo, larger systems such as
-            SALMONN and Baichuan-Omni, and newer omni models including Qwen2.5-Omni,
-            Qwen3-Omni, GPT Audio, Gemini 3.1 Pro, and Gemini 3.5 Flash.
+          <p class="section-lead compact-lead">
+            Table V reports the main model suite with the abbreviations below. Earlier
+            appendix runs are listed separately for comparison.
           </p>
-          <p>
-            Table IV summarizes whether each model is reported to cover general sound, music,
-            and speech. This distinction matters because strong general audio or speech
-            capability does not automatically imply strong music reasoning, especially for
-            fine-grained and temporally structured MIR tasks.
-          </p>
-          <p>
-            The comparison also separates music-specialized models from broad audio models
-            and newer omni-modal systems. This makes it possible to ask whether scale, speech
-            support, music-focused training, or proprietary model quality leads to more robust
-            MIR behavior. The answer is mixed: some new systems improve selected tasks, but
-            no model is consistently strong across the whole benchmark.
-          </p>
+          <div class="table-stack model-tables">
+            <article class="table-card">
+              <h3>Main models in Table V</h3>
+              <div class="table-scroll">
+                <table class="data-table model-table">
+                  <thead>
+                    <tr>
+                      <th>Abbrev.</th>
+                      <th>Model</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Qw2.5</td><td>Qwen2.5-Omni</td><td>Omni-modal model</td></tr>
+                    <tr><td>Qw3</td><td>Qwen3-Omni</td><td>Omni-modal model</td></tr>
+                    <tr><td>AF3</td><td>Audio-Flamingo 3</td><td>Audio-language model</td></tr>
+                    <tr><td>MF</td><td>Music-Flamingo</td><td>Music-focused model</td></tr>
+                    <tr><td>MOSS</td><td>MOSS-Audio-8B</td><td>Audio-language model</td></tr>
+                    <tr><td>AST</td><td>AudSemThinker</td><td>Audio reasoning model</td></tr>
+                    <tr><td>GPT-A</td><td>GPT Audio</td><td>Proprietary model</td></tr>
+                    <tr><td>Gem. Pro</td><td>Gemini 3.1 Pro</td><td>Proprietary model</td></tr>
+                    <tr><td>Gem. Flash</td><td>Gemini 3.5 Flash</td><td>Proprietary model</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+            <article class="table-card">
+              <h3>Appendix / earlier runs</h3>
+              <div class="table-scroll">
+                <table class="data-table model-table">
+                  <thead>
+                    <tr>
+                      <th>Appendix label</th>
+                      <th>Model</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Pengi</td><td>Pengi</td><td>Earlier audio-text baseline</td></tr>
+                    <tr><td>AF</td><td>Audio-Flamingo</td><td>Earlier Audio-Flamingo run</td></tr>
+                    <tr><td>LTU</td><td>LTU</td><td>Audio instruction-following model</td></tr>
+                    <tr><td>LTU-AS</td><td>LTU-AS</td><td>Audio-speech variant</td></tr>
+                    <tr><td>MusiL.</td><td>MusiLingo-long</td><td>Music-language model</td></tr>
+                    <tr><td>MuLLaMA</td><td>MuLLaMA</td><td>Music-language model</td></tr>
+                    <tr><td>Gama</td><td>GAMA</td><td>Audio-language model</td></tr>
+                    <tr><td>GAMA-IT</td><td>GAMA-IT</td><td>Instruction-tuned GAMA variant</td></tr>
+                    <tr><td>Qw.</td><td>Qwen-Audio-Chat</td><td>Earlier Qwen-Audio model</td></tr>
+                    <tr><td>Qw2.</td><td>Qwen2-Audio-Instruct</td><td>Earlier Qwen2-Audio model</td></tr>
+                    <tr><td>Salm.</td><td>SALMONN-Audio</td><td>Earlier audio-language model</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 

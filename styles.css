@@ -395,6 +395,11 @@ h2 {
   gap: 28px;
 }
 
+.model-tables {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
 .table-card {
   padding: 22px;
   border: 1px solid var(--border);
@@ -433,6 +438,10 @@ h2 {
 .leaderboard-table {
   min-width: 1180px;
   font-size: 13px;
+}
+
+.model-table {
+  min-width: 560px;
 }
 
 .data-table th,
@@ -529,7 +538,8 @@ h2 {
 
   .stats-grid,
   .card-grid,
-  .protocol-grid {
+  .protocol-grid,
+  .model-tables {
     grid-template-columns: 1fr;
   }
 
