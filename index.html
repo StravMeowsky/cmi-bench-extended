@@ -19,8 +19,7 @@
           <a href="#benchmark">Benchmark</a>
           <a href="#evaluation">Evaluation</a>
           <a href="#results">Results</a>
-          <a href="#figures">Figures</a>
-          <a href="#tables">Tables</a>
+          <a href="#sampling">Sampling</a>
           <a href="#bibtex">BibTeX</a>
           <a href="assets/paper.pdf">Paper</a>
         </div>
@@ -247,26 +246,6 @@
         </div>
       </section>
 
-      <section id="figures" class="section muted-section">
-        <div class="container">
-          <h2>Figures</h2>
-          <div class="figure-stack">
-            <figure class="plain-figure">
-              <img src="assets/paper-figures/fig-2.png" alt="Rank-correlation analysis for dataset-adaptive test set sampling">
-              <figcaption>Fig. 2: Rank-correlation analysis for dataset-adaptive test set sampling.</figcaption>
-            </figure>
-            <figure class="plain-figure">
-              <img src="assets/paper-figures/fig-3.png" alt="Fine-grained tag-classification evaluation">
-              <figcaption>Fig. 3: Fine-grained tag-classification evaluation.</figcaption>
-            </figure>
-            <figure class="plain-figure small">
-              <img src="assets/paper-figures/fig-4.png" alt="Prompt-sensitivity ablation study">
-              <figcaption>Fig. 4: Prompt-sensitivity ablation study.</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
       <section id="results" class="section">
         <div class="container">
           <h2>Results and Discussion</h2>
@@ -289,107 +268,10 @@
             </div>
             <div class="finding">
               <span>04</span>
-              <p><strong>Lyrics transcription is surprisingly weak.</strong> Even models with speech-capable encoders struggle on DSing, suggesting that ASR capability alone is not enough for lyric-specific transcription.</p>
-            </div>
-            <div class="finding">
-              <span>05</span>
-              <p><strong>Prompt format can change performance.</strong> The ablation in Fig. 4 shows that models can be sensitive to task wording and output constraints, especially for regression and classification tasks.</p>
-            </div>
-            <div class="finding">
-              <span>06</span>
               <p><strong>Sequential MIR remains a bottleneck.</strong> Dense timestamped outputs, interval boundaries, and tuple formats are brittle for current instruction-following audio models.</p>
             </div>
           </div>
-          <div class="result-summary">
-            <p>
-              Overall, CMI-Bench suggests that current audio-text LLMs have learned useful
-              high-level associations between music and language, but still lack the precision,
-              calibration, and output discipline required by MIR. The gap is especially visible
-              when answers must be numeric, frame-level, time-aligned, or constrained to
-              culturally specific labels.
-            </p>
-            <p>
-              These results suggest that future music foundation models will need stronger
-              MIR-specific post-training, better output-format control, broader music coverage,
-              and evaluation setups that preserve the structure of real MIR tasks instead of
-              flattening them into generic question answering.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="tables" class="section">
-        <div class="container">
-          <h2>Tables</h2>
-          <div class="table-stack">
-            <article class="table-card">
-              <h3>Table II / III: Dataset-adaptive sampling statistics</h3>
-              <div class="table-scroll">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>Dataset / Task</th>
-                      <th>Full Size</th>
-                      <th>Sample Size</th>
-                      <th>Preserve</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>GiantSteps Key</td><td>2406</td><td>500</td><td>20.8%</td></tr>
-                    <tr><td>MTT</td><td>5329</td><td>300</td><td>5.6%</td></tr>
-                    <tr><td>MTG-Instrument</td><td>5115</td><td>750</td><td>14.7%</td></tr>
-                    <tr><td>MTG-Genre</td><td>11479</td><td>750</td><td>6.5%</td></tr>
-                    <tr><td>MTG-Emotion</td><td>4231</td><td>2500</td><td>59.1%</td></tr>
-                    <tr><td>MTG-Top50</td><td>11356</td><td>500</td><td>4.4%</td></tr>
-                    <tr><td>NSynth-Instrument</td><td>4096</td><td>100</td><td>2.4%</td></tr>
-                    <tr><td>NSynth-Pitch</td><td>4096</td><td>2000</td><td>48.8%</td></tr>
-                    <tr><td>SDD</td><td>1106</td><td>100</td><td>9.0%</td></tr>
-                    <tr><td>MedleyDB</td><td>618</td><td>500</td><td>80.9%</td></tr>
-                    <tr><td>MusicCaps</td><td>2813</td><td>100</td><td>3.6%</td></tr>
-                    <tr><td>SongFormBench</td><td>300</td><td>300</td><td>100.0%</td></tr>
-                    <tr><td>Lyra-Instrument / Dance</td><td>270</td><td>200</td><td>74.1%</td></tr>
-                    <tr><td>Lyra-Genre</td><td>270</td><td>100</td><td>37.0%</td></tr>
-                    <tr><td>Lyra-Place</td><td>270</td><td>270</td><td>100.0%</td></tr>
-                    <tr><td>Arab-Andalusian tasks</td><td>847</td><td>200-300</td><td>23.6%-35.4%</td></tr>
-                    <tr class="total-row"><td>Total</td><td>61619</td><td>11289</td><td>18.3%</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </article>
-
-            <article class="table-card">
-              <h3>Table IV: Audio-language model comparison</h3>
-              <div class="table-scroll">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>Model</th>
-                      <th>#Params</th>
-                      <th>Sound</th>
-                      <th>Music</th>
-                      <th>Speech</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Pengi</td><td>323M</td><td>✓</td><td>✓</td><td>✗</td></tr>
-                    <tr><td>Audio Flamingo</td><td>2.2B</td><td>✓</td><td>✓</td><td>✗</td></tr>
-                    <tr><td>LTU / LTU-AS</td><td>7B</td><td>✓</td><td>✓</td><td>✗ / ✓</td></tr>
-                    <tr><td>MusiLingo-long / MuLLaMA</td><td>7B</td><td>✗</td><td>✓</td><td>✗</td></tr>
-                    <tr><td>GAMA / GAMA-IT</td><td>7B</td><td>✓</td><td>✓</td><td>✗</td></tr>
-                    <tr><td>SALMONN</td><td>13B</td><td>✓</td><td>✓</td><td>✓</td></tr>
-                    <tr><td>Qwen-Audio-Chat</td><td>8.4B</td><td>✓</td><td>✗</td><td>✓</td></tr>
-                    <tr><td>Qwen2-Audio-Instruct</td><td>8.4B</td><td>✓</td><td>✓</td><td>✓</td></tr>
-                    <tr><td>Audio Flamingo 2 / 3</td><td>7B</td><td>✓</td><td>✓</td><td>✓</td></tr>
-                    <tr><td>Audio-Reasoner / Music Flamingo</td><td>7B</td><td>✓ / ✗</td><td>✓</td><td>✓ / ✗</td></tr>
-                    <tr><td>Baichuan-Omni</td><td>11B</td><td>✓</td><td>✓</td><td>✓</td></tr>
-                    <tr><td>Qwen2.5-Omni</td><td>7B</td><td>✓</td><td>✓</td><td>✓</td></tr>
-                    <tr><td>Qwen3-Omni</td><td>30B-A3B</td><td>✓</td><td>✓</td><td>✓</td></tr>
-                    <tr><td>GPT Audio / Gemini 3.1 Pro / Gemini 3.5 Flash</td><td>Undisclosed</td><td>✓</td><td>✓</td><td>✓</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </article>
-
+          <div class="table-stack result-table-stack">
             <article class="table-card">
               <h3>Table V: Performance leaderboard</h3>
               <p class="table-note">Best completed scores are highlighted. Asterisks mark proprietary-model scores computed on sampled subsets.</p>
@@ -432,6 +314,72 @@
                 </table>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="sampling" class="section muted-section">
+        <div class="container">
+          <h2>Sampling Strategy</h2>
+          <p class="section-lead compact-lead">
+            For proprietary models, the benchmark uses a dataset-adaptive subset that reduces
+            evaluation cost while preserving model-ranking agreement with the full test set.
+          </p>
+          <div class="figure-stack sampling-stack">
+            <figure class="plain-figure">
+              <img src="assets/paper-figures/fig-2.png" alt="Rank-correlation analysis for dataset-adaptive test set sampling">
+              <figcaption>Fig. 2: Rank-correlation analysis for dataset-adaptive test set sampling.</figcaption>
+            </figure>
+            <article class="table-card">
+              <h3>Table II / III: Dataset-adaptive sampling statistics</h3>
+              <div class="table-scroll">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Dataset / Task</th>
+                      <th>Full Size</th>
+                      <th>Sample Size</th>
+                      <th>Preserve</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>GiantSteps Key</td><td>2406</td><td>500</td><td>20.8%</td></tr>
+                    <tr><td>MTT</td><td>5329</td><td>300</td><td>5.6%</td></tr>
+                    <tr><td>MTG-Instrument</td><td>5115</td><td>750</td><td>14.7%</td></tr>
+                    <tr><td>MTG-Genre</td><td>11479</td><td>750</td><td>6.5%</td></tr>
+                    <tr><td>MTG-Emotion</td><td>4231</td><td>2500</td><td>59.1%</td></tr>
+                    <tr><td>MTG-Top50</td><td>11356</td><td>500</td><td>4.4%</td></tr>
+                    <tr><td>NSynth-Instrument</td><td>4096</td><td>100</td><td>2.4%</td></tr>
+                    <tr><td>NSynth-Pitch</td><td>4096</td><td>2000</td><td>48.8%</td></tr>
+                    <tr><td>SDD</td><td>1106</td><td>100</td><td>9.0%</td></tr>
+                    <tr><td>MedleyDB</td><td>618</td><td>500</td><td>80.9%</td></tr>
+                    <tr><td>MusicCaps</td><td>2813</td><td>100</td><td>3.6%</td></tr>
+                    <tr><td>SongFormBench</td><td>300</td><td>300</td><td>100.0%</td></tr>
+                    <tr><td>Lyra-Instrument / Dance</td><td>270</td><td>200</td><td>74.1%</td></tr>
+                    <tr><td>Lyra-Genre</td><td>270</td><td>100</td><td>37.0%</td></tr>
+                    <tr><td>Lyra-Place</td><td>270</td><td>270</td><td>100.0%</td></tr>
+                    <tr><td>Arab-Andalusian tasks</td><td>847</td><td>200-300</td><td>23.6%-35.4%</td></tr>
+                    <tr class="total-row"><td>Total</td><td>61619</td><td>11289</td><td>18.3%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="analysis" class="section">
+        <div class="container">
+          <h2>Additional Analysis</h2>
+          <div class="figure-stack">
+            <figure class="plain-figure">
+              <img src="assets/paper-figures/fig-3.png" alt="Fine-grained tag-classification evaluation">
+              <figcaption>Fig. 3: Fine-grained tag-classification evaluation.</figcaption>
+            </figure>
+            <figure class="plain-figure small">
+              <img src="assets/paper-figures/fig-4.png" alt="Prompt-sensitivity ablation study">
+              <figcaption>Fig. 4: Prompt-sensitivity ablation study.</figcaption>
+            </figure>
           </div>
         </div>
       </section>
