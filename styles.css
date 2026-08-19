@@ -396,7 +396,6 @@ h2 {
 }
 
 .model-tables {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
 }
 
@@ -441,7 +440,7 @@ h2 {
 }
 
 .model-table {
-  min-width: 560px;
+  min-width: 760px;
 }
 
 .data-table th,
