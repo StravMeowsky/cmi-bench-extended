@@ -92,22 +92,23 @@
             match established Music Information Retrieval (MIR) practice.
           </p>
           <p>
-            This paper asks a more direct question: can audio LLMs solve the kinds of MIR
-            problems that music researchers have studied for decades? CMI-Bench answers this
-            by turning traditional MIR annotations into instruction-following prompts while
-            keeping the original task-specific metrics. As a result, audio LLMs can be compared
-            not only with each other, but also against specialized supervised MIR systems.
+            This project provides a benchmark-centered view of whether audio LLMs can solve
+            the kinds of MIR problems that music researchers have studied for decades. The
+            benchmark turns traditional MIR annotations into instruction-following prompts
+            while keeping the original task-specific metrics. As a result, audio LLMs can be
+            compared not only with each other, but also against specialized supervised MIR
+            systems.
           </p>
           <p>
             The benchmark is designed around the observation that music understanding is not
             a single ability. A model may describe a song fluently while still failing to
             estimate pitch, align beats, transcribe lyrics, identify culturally specific forms,
-            or produce a valid list of timestamped events. CMI-Bench therefore separates
+            or produce a valid list of timestamped events. The evaluation therefore separates
             high-level semantic tasks from fine-grained, continuous, and sequential MIR tasks.
           </p>
           <div class="takeaway-box">
             <strong>Core idea:</strong>
-            CMI-Bench bridges natural-language interaction and MIR evaluation. Models receive
+            The benchmark bridges natural-language interaction and MIR evaluation. Models receive
             audio plus an instruction, but their answers are judged with metrics appropriate
             for the underlying music task.
           </div>
@@ -226,7 +227,7 @@
             segmentation metrics.
           </p>
           <p>
-            For proprietary models, the paper further introduces a dataset-adaptive sampling
+            For proprietary models, the benchmark uses a dataset-adaptive sampling
             strategy. Subset sizes are selected by measuring rank-correlation agreement with
             full-test model rankings, allowing API-based systems to be evaluated efficiently
             while preserving reliable comparisons.
@@ -330,7 +331,7 @@
               culturally specific labels.
             </p>
             <p>
-              The paper argues that future music foundation models will need stronger
+              These results suggest that future music foundation models will need stronger
               MIR-specific post-training, better output-format control, broader music coverage,
               and evaluation setups that preserve the structure of real MIR tasks instead of
               flattening them into generic question answering.
