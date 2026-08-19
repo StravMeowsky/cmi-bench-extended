@@ -426,6 +426,28 @@ h2 {
   border-radius: 8px;
 }
 
+.leaderboard-scroll {
+  overflow-x: scroll;
+  padding-bottom: 8px;
+  scrollbar-color: #1f6f61 #edf2f0;
+  scrollbar-width: thin;
+}
+
+.leaderboard-scroll::-webkit-scrollbar {
+  height: 12px;
+}
+
+.leaderboard-scroll::-webkit-scrollbar-track {
+  background: #edf2f0;
+  border-radius: 999px;
+}
+
+.leaderboard-scroll::-webkit-scrollbar-thumb {
+  background: #1f6f61;
+  border: 3px solid #edf2f0;
+  border-radius: 999px;
+}
+
 .data-table {
   width: 100%;
   min-width: 960px;
