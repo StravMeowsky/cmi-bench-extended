@@ -253,95 +253,45 @@ h2 {
   text-align: center;
 }
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+.compact-lead {
+  max-width: 920px;
+  margin-bottom: 22px;
 }
 
-.process-row {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-  margin: 0 0 26px;
+.benchmark-table {
+  max-width: 1040px;
+  margin-inline: auto;
 }
 
-.process-row > div {
-  padding: 20px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-}
-
-.process-row span {
-  display: inline-flex;
-  width: 32px;
-  height: 32px;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-  border-radius: 50%;
-  background: #eaf2ff;
-  color: var(--link);
-  font-weight: 800;
-}
-
-.process-row h3 {
-  margin: 0 0 8px;
-  font-size: 17px;
-}
-
-.process-row p {
-  margin: 0;
-  color: #444950;
-  font-size: 15px;
-}
-
-.info-card {
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-}
-
-.info-card h3 {
-  margin: 0 0 10px;
-  color: #222222;
-  font-size: 19px;
-  line-height: 1.25;
-}
-
-.info-card p {
-  margin: 0;
-  color: #444950;
-  font-size: 16px;
-}
-
-.method-grid {
+.protocol-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
-  margin-top: 20px;
 }
 
-.method-grid article {
+.protocol-grid article {
   padding: 22px;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
-.method-grid h3 {
+.protocol-grid h3 {
   margin: 0 0 10px;
   font-size: 18px;
 }
 
-.method-grid p {
+.protocol-grid p {
   margin: 0;
   color: #444950;
   font-size: 16px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .finding-list {
@@ -579,8 +529,7 @@ h2 {
 
   .stats-grid,
   .card-grid,
-  .process-row,
-  .method-grid {
+  .protocol-grid {
     grid-template-columns: 1fr;
   }
 

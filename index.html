@@ -118,127 +118,68 @@
       <section id="benchmark" class="section muted-section">
         <div class="container">
           <h2>Benchmark Composition</h2>
-          <p class="section-lead">
-            CMI-Bench reformulates established MIR annotations into natural-language
-            instruction-response pairs while preserving task-specific evaluation protocols.
+          <p class="section-lead compact-lead">
+            The benchmark covers 17 MIR task types across 29 datasets. Each dataset is converted
+            into an audio-conditioned instruction-following format, while evaluation remains tied
+            to the original MIR task and metric.
           </p>
-          <div class="process-row">
-            <div>
-              <span>1</span>
-              <h3>Collect MIR Tasks</h3>
-              <p>Start from widely used MIR datasets covering tags, pitch, key, rhythm, captions, lyrics, emotion, and culturally specific taxonomies.</p>
+          <article class="table-card benchmark-table">
+            <h3>Table I: Tasks, datasets, metrics, and test samples</h3>
+            <div class="table-scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Task</th>
+                    <th>Dataset</th>
+                    <th>Metrics</th>
+                    <th>#Test Samples</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Key Detection</td><td>GS</td><td>G-Mean Score</td><td>2406</td></tr>
+                  <tr><td>Emotion Regression</td><td>EMO</td><td>R2</td><td>125</td></tr>
+                  <tr><td>Music Tagging</td><td>MagnaTagATune / MTG-Top50</td><td>ROC-AUC, PR-AUC</td><td>5329 / 11356</td></tr>
+                  <tr><td>Instrument Classification</td><td>MTG-Instrument / NSynth-Instrument</td><td>ROC-AUC, PR-AUC / Accuracy</td><td>5115 / 4096</td></tr>
+                  <tr><td>Genre Classification</td><td>MTG-Genre / GTZAN</td><td>ROC-AUC, PR-AUC / Accuracy</td><td>11479 / 290</td></tr>
+                  <tr><td>Emotion Tagging</td><td>MTG-Emotion</td><td>ROC-AUC, PR-AUC</td><td>4231</td></tr>
+                  <tr><td>Pitch Estimation</td><td>NSynth-Pitch</td><td>Accuracy</td><td>4096</td></tr>
+                  <tr><td>Singing Technique Classification</td><td>VocalSet</td><td>Accuracy</td><td>1140</td></tr>
+                  <tr><td>Music Captioning</td><td>SDD / MusicCaps</td><td>BLEU, METEOR, ROUGE, BERTScore</td><td>1106 / 2813</td></tr>
+                  <tr><td>Lyrics Transcription</td><td>DSing</td><td>WER, CER</td><td>482</td></tr>
+                  <tr><td>Beat / Downbeat Tracking</td><td>GTZAN-Rhythm / Ballroom</td><td>F-Measure</td><td>290 / 685</td></tr>
+                  <tr><td>Melody Extraction</td><td>MedleyDB v2</td><td>Melody Accuracy</td><td>618</td></tr>
+                  <tr><td>Performance Technique Classification</td><td>Guzheng-99</td><td>Micro-F1, Macro-F1</td><td>94</td></tr>
+                  <tr><td>Structure Analysis</td><td>SongFormBench</td><td>Accuracy, HR.5F, HR3F</td><td>300</td></tr>
+                  <tr><td>Greek Folk Music Understanding</td><td>Lyra-Instrument / Genre / Place / Dance</td><td>Micro-F1, Macro-F1, Exact Match / Accuracy</td><td>270 each</td></tr>
+                  <tr><td>Arab-Andalusian Music Understanding</td><td>Arab-Andalusian Nawba / Tab / Form / Mizan</td><td>Accuracy</td><td>847 each</td></tr>
+                </tbody>
+              </table>
             </div>
-            <div>
-              <span>2</span>
-              <h3>Write Instructions</h3>
-              <p>Represent each task as an audio-conditioned natural language instruction with examples or formatting constraints when needed.</p>
-            </div>
-            <div>
-              <span>3</span>
-              <h3>Parse Outputs</h3>
-              <p>Normalize free-form model responses into labels, scores, timestamps, tuples, segments, or text strings.</p>
-            </div>
-            <div>
-              <span>4</span>
-              <h3>Use MIR Metrics</h3>
-              <p>Evaluate with standard MIR/NLP metrics such as ROC-AUC, PR-AUC, R2, F-measure, melody accuracy, WER, and BERTScore.</p>
-            </div>
-          </div>
-          <div class="card-grid">
-            <article class="info-card">
-              <h3>Clip-level Understanding</h3>
-              <p>
-                Key detection, genre classification, emotion tagging, instrument recognition,
-                pitch estimation, and continuous arousal/valence regression.
-              </p>
-            </article>
-            <article class="info-card">
-              <h3>Language-facing Music Tasks</h3>
-              <p>
-                Music captioning and lyrics transcription are evaluated with text generation
-                metrics such as BLEU, METEOR, ROUGE, BERTScore, WER, and CER.
-              </p>
-            </article>
-            <article class="info-card">
-              <h3>Sequential MIR</h3>
-              <p>
-                Melody extraction, beat tracking, downbeat tracking, structure segmentation,
-                and playing-technique detection test time-aligned musical reasoning.
-              </p>
-            </article>
-            <article class="info-card">
-              <h3>World-music Coverage</h3>
-              <p>
-                Lyra and Arab-Andalusian tasks probe cultural and regional music understanding
-                beyond common Western pop-centered evaluation settings.
-              </p>
-            </article>
-          </div>
-          <div class="method-grid">
-            <article>
-              <h3>Instruction Format</h3>
-              <p>
-                Each example pairs an audio input placeholder with a task-specific prompt.
-                Prompts may include allowed labels, numeric ranges, examples, or required
-                output structures such as timestamp lists and segment intervals.
-              </p>
-            </article>
-            <article>
-              <h3>Output Normalization</h3>
-              <p>
-                Since LLM responses are free-form, outputs are normalized before scoring:
-                labels are cleaned, numbers are constrained, invalid tuples are filtered,
-                timestamps are sorted, and missing predictions are handled consistently.
-              </p>
-            </article>
-            <article>
-              <h3>Task Breadth</h3>
-              <p>
-                The benchmark combines classic MIR datasets with newer music-language and
-                world-music tasks, producing a testbed that stresses both common acoustic
-                recognition and less represented musical concepts.
-              </p>
-            </article>
-          </div>
+          </article>
         </div>
       </section>
 
       <section id="evaluation" class="section">
-        <div class="container text-container">
+        <div class="container">
           <h2>Evaluation Protocol</h2>
-          <p>
-            Rather than converting music understanding into multiple-choice questions,
-            CMI-Bench asks models to produce open-ended answers and post-processes those
-            answers into formats compatible with established MIR metrics and toolkits.
+          <p class="section-lead compact-lead">
+            Models produce open-ended answers, which are normalized into task-specific formats
+            and scored with established MIR/NLP metrics rather than multiple-choice accuracy.
           </p>
-          <p>
-            Multi-class tasks are evaluated with strict normalized label matching. Multi-label
-            tagging tasks use semantic matching with a retrieval encoder for large tag spaces,
-            while Lyra labels are parsed directly into explicit label sets. Key detection uses
-            weighted key scores from <code>mir_eval</code>; emotion regression constrains and
-            normalizes 1-to-9 scalar outputs before computing R2; captioning uses BLEU, METEOR,
-            ROUGE, and BERTScore.
-          </p>
-          <p>
-            Sequential tasks require additional output control. Lyrics are scored with WER and
-            CER. Beat and downbeat predictions are parsed as time points and evaluated with a
-            20 ms F-measure tolerance. Melody extraction uses frame-level pitch accuracy, and
-            song structure segmentation parses interval lists into section boundaries for
-            segmentation metrics.
-          </p>
-          <p>
-            For proprietary models, the benchmark uses a dataset-adaptive sampling
-            strategy. Subset sizes are selected by measuring rank-correlation agreement with
-            full-test model rankings, allowing API-based systems to be evaluated efficiently
-            while preserving reliable comparisons.
-          </p>
-          <p>
-            This sampling protocol is important because the full benchmark contains more than
-            61,000 examples and many audio clips. The sampled proprietary evaluation keeps
-            11,289 examples, or 18.3% of the full set, while targeting Kendall's τ ≥ 0.90
-            and Spearman's ρ ≥ 0.95 against full-set rankings. In other words, the paper
-            tries to reduce cost without changing the conclusions about relative model order.
-          </p>
+          <div class="protocol-grid">
+            <article>
+              <h3>Open-ended Outputs</h3>
+              <p>Labels, scalar scores, captions, lyrics, timestamps, tuples, and segment intervals are parsed from free-form model responses.</p>
+            </article>
+            <article>
+              <h3>Task-specific Metrics</h3>
+              <p>Evaluation uses metrics such as ROC-AUC, PR-AUC, R2, F-measure, melody accuracy, WER, CER, BLEU, METEOR, ROUGE, and BERTScore.</p>
+            </article>
+            <article>
+              <h3>Cost-aware API Sampling</h3>
+              <p>For proprietary models, a 11,289-example subset preserves full-test rankings using Kendall's τ and Spearman's ρ thresholds.</p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -344,40 +285,6 @@
         <div class="container">
           <h2>Tables</h2>
           <div class="table-stack">
-            <article class="table-card">
-              <h3>Table I: Tasks, datasets, metrics, and test samples</h3>
-              <div class="table-scroll">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>Task</th>
-                      <th>Dataset</th>
-                      <th>Metrics</th>
-                      <th>#Test Samples</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Key Detection</td><td>GS</td><td>G-Mean Score</td><td>2406</td></tr>
-                    <tr><td>Emotion Regression</td><td>EMO</td><td>R2</td><td>125</td></tr>
-                    <tr><td>Music Tagging</td><td>MagnaTagATune / MTG-Top50</td><td>ROC-AUC, PR-AUC</td><td>5329 / 11356</td></tr>
-                    <tr><td>Instrument Classification</td><td>MTG-Instrument / NSynth-Instrument</td><td>ROC-AUC, PR-AUC / Accuracy</td><td>5115 / 4096</td></tr>
-                    <tr><td>Genre Classification</td><td>MTG-Genre / GTZAN</td><td>ROC-AUC, PR-AUC / Accuracy</td><td>11479 / 290</td></tr>
-                    <tr><td>Emotion Tagging</td><td>MTG-Emotion</td><td>ROC-AUC, PR-AUC</td><td>4231</td></tr>
-                    <tr><td>Pitch Estimation</td><td>NSynth-Pitch</td><td>Accuracy</td><td>4096</td></tr>
-                    <tr><td>Singing Technique Classification</td><td>VocalSet</td><td>Accuracy</td><td>1140</td></tr>
-                    <tr><td>Music Captioning</td><td>SDD / MusicCaps</td><td>BLEU, METEOR, ROUGE, BERTScore</td><td>1106 / 2813</td></tr>
-                    <tr><td>Lyrics Transcription</td><td>DSing</td><td>WER, CER</td><td>482</td></tr>
-                    <tr><td>Beat / Downbeat Tracking</td><td>GTZAN-Rhythm / Ballroom</td><td>F-Measure</td><td>290 / 685</td></tr>
-                    <tr><td>Melody Extraction</td><td>MedleyDB v2</td><td>Melody Accuracy</td><td>618</td></tr>
-                    <tr><td>Performance Technique Classification</td><td>Guzheng-99</td><td>Micro-F1, Macro-F1</td><td>94</td></tr>
-                    <tr><td>Structure Analysis</td><td>SongFormBench</td><td>Accuracy, HR.5F, HR3F</td><td>300</td></tr>
-                    <tr><td>Greek Folk Music Understanding</td><td>Lyra-Instrument / Genre / Place / Dance</td><td>Micro-F1, Macro-F1, Exact Match / Accuracy</td><td>270 each</td></tr>
-                    <tr><td>Arab-Andalusian Music Understanding</td><td>Arab-Andalusian Nawba / Tab / Form / Mizan</td><td>Accuracy</td><td>847 each</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </article>
-
             <article class="table-card">
               <h3>Table II / III: Dataset-adaptive sampling statistics</h3>
               <div class="table-scroll">
